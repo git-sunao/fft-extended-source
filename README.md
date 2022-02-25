@@ -1,4 +1,4 @@
-# fft-finite-source-public
+# fft-finite-source
 Public version of FFT based evaluation of finite source magnification.
 
 FFT based method is implemented in `magnification/mag_fft.py`. 
