@@ -12,6 +12,6 @@ FFT based method uses public FFTLog code by Xiao Fang, available at [FFTLog-and-
 ## Contents: notebooks and a script
 - `howtouse.ipynb` shows how to use module in `magnification`. Please run `magnification/Makefile` when you want to use method developed by Lee et al. (2009).
 - `comparison.ipynb` makes a plot of comparison of residuals by various evaluation methods of finite source magnification.
-- `timeit.ipynb` measures computational time of various methods.
-- `paperfig` can reproducce figures shown in the paper.
+- `timeit_methods.ipynb` measures computational time of various methods.
+- `paperfig.ipynb` can reproduce figures shown in the paper.
 - `testdata.py` is a module to generate reference magnification using `scipy.integrate.quad`.
