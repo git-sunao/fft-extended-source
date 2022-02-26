@@ -1,7 +1,8 @@
 # fft-finite-source
 Public version of FFT based evaluation of finite source magnification.
 
-FFT based method is implemented in `magnification/mag_fft.py`. 
+FFT based method of finite soruce magnification is implemented in `magnification/mag_fft.py`. 
+FFT based method of time averaged magnification is implemented in `magnification/timeave.py`.
 
 Please cite my paper if you use my code for your project. 
 
@@ -11,6 +12,7 @@ FFT based method uses public FFTLog code by Xiao Fang, available at [FFTLog-and-
 
 ## Contents: notebooks and a script
 - `howtouse.ipynb` shows how to use module in `magnification`. Please run `magnification/Makefile` when you want to use method developed by Lee et al. (2009).
+- `timeave.ipynb` shows how to use `timeave.py` module.
 - `comparison.ipynb` makes a plot of comparison of residuals by various evaluation methods of finite source magnification.
 - `timeit_methods.ipynb` measures computational time of various methods.
 - `paperfig.ipynb` can reproduce figures shown in the paper.
