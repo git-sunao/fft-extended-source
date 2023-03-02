@@ -1,5 +1,6 @@
 # fft-extended-source
 Public version of FFT based evaluation of extended source magnification.
+Please cite [Sugiyama 2022](https://arxiv.org/abs/2203.06637).
 
 FFT based method of extended soruce magnification is implemented in `magnification/mag_fft.py`. 
 FFT based method of time averaged magnification is implemented in `magnification/timeave.py`.
