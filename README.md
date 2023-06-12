@@ -20,5 +20,3 @@ All the ipython notebooks are saved in [ipynb](ipynb) direcotry.
 - `paperfig.ipynb` can reproduce figures shown in the paper.
 - `testdata.py` is a module to generate reference magnification using `scipy.integrate.quad`, which will be used for validation of the FFT based method.
 
-# Updates
-- 2023.06.12: reorganized the structure of the package, and named the package as `mlfast`.
