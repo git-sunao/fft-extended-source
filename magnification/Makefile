@@ -1,1 +1,0 @@
-gcc -shared -fPIC mag_C.c -o mag_C.so

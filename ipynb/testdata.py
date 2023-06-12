@@ -1,7 +1,7 @@
 import numpy as np
 import os
 from scipy.integrate import simps, quad
-from magnification import mag_wm
+from mlfast import mag_wm
 
 def s_disk(u, rho):
     if isinstance(u, float) or isinstance(u, int):
