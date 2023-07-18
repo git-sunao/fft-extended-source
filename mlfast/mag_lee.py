@@ -32,9 +32,7 @@ try:
                            c_int,
                            c_double]
 except:
-    print('library not found.')
-    c = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'Makefile')
-    print(f'Run {c}')
+    print('library not found for mag_lee.')
 
 def A_disk(u, rho, n=100):
     if isinstance(u, float) or isinstance(u, int):

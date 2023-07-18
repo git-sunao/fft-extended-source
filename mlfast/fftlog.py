@@ -144,12 +144,13 @@ def c_window(n,n_cut):
 	"""
 	n_right = n[-1] - n_cut
 	# n_left = n[0]+ n_cut 
-	n_r=n[ n[:]  > n_right ] 
+	n_r=n[ n  > n_right ] 
 	# n_l=n[ n[:]  <  n_left ] 
 	theta_right=(n[-1]-n_r)/float(n[-1]-n_right-1) 
 	# theta_left=(n_l - n[0])/float(n_left-n[0]-1) 
 	W=np.ones(n.size)
-	W[n[:] > n_right]= theta_right - 1/(2*np.pi)*np.sin(2*np.pi*theta_right)
+	idx = n[:] > n_right
+	W[idx] = theta_right - 1/(2*np.pi)*np.sin(2*np.pi*theta_right)
 	# W[n[:] < n_left]= theta_left - 1/(2*pi)*sin(2*pi*theta_left)
 	return W
 
@@ -175,14 +176,17 @@ def g_m_vals(mu,q):
 
 	alpha_plus=(mu+1+q_good)/2.
 	alpha_minus=(mu+1-q_good)/2.
-	
-	g_m[(np.absolute(imag_q)+ np.absolute(mu) <=cut) & (q!= mu + 1 + 0.0j)] =gamma(alpha_plus)/gamma(alpha_minus)
 
-	# asymptotic form 								
-	g_m[np.absolute(imag_q)+ np.absolute(mu)>cut] = np.exp( (asym_plus-0.5)*np.log(asym_plus) - (asym_minus-0.5)*np.log(asym_minus) - asym_q \
-		+1./12 *(1./asym_plus - 1./asym_minus) +1./360.*(1./asym_minus**3 - 1./asym_plus**3) +1./1260*(1./asym_plus**5 - 1./asym_minus**5) )
+	idx = (np.absolute(imag_q)+ np.absolute(mu) <=cut) & (q!= mu + 1 + 0.0j)
+	g_m[idx] = gamma(alpha_plus)/gamma(alpha_minus)
 
-	g_m[np.where(q==mu+1+0.0j)[0]] = 0.+0.0j
+	# asymptotic form 	
+	idx = np.absolute(imag_q)+ np.absolute(mu)>cut
+	g_m[idx] = np.exp( (asym_plus-0.5)*np.log(asym_plus) - (asym_minus-0.5)*np.log(asym_minus) - asym_q \
+                 +1./12 *(1./asym_plus - 1./asym_minus) +1./360.*(1./asym_minus**3 - 1./asym_plus**3) \
+                 +1./1260*(1./asym_plus**5 - 1./asym_minus**5) )
+
+	g_m[idx] = 0.+0.0j
 	return g_m
 
 def g_l(l,z_array):

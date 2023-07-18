@@ -11,6 +11,11 @@ FFT based method uses public FFTLog code by Xiao Fang, available at [FFTLog-and-
 
 `fft-extended-source` is open source and distributed with [MIT license](https://opensource.org/licenses/mit).
 
+# Installation
+```
+python setup.py install
+```
+
 ## Contents: notebooks and a script
 All the ipython notebooks are saved in [ipynb](ipynb) direcotry.
 - `howtouse.ipynb` shows how to use module in `magnification`. Please run `magnification/Makefile` when you want to use method developed by Lee et al. (2009).
