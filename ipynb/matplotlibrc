@@ -1,0 +1,10 @@
+font.family : serif
+font.serif : STIXGeneral
+axes.linewidth : 1.5
+xtick.top : True
+xtick.minor.visible : True
+ytick.minor.visible : True
+xtick.direction : in
+ytick.direction : in
+text.usetex : True
+font.size : 14 

@@ -1,7 +1,26 @@
+"""
+Usage:
+
+# define profile or take predefine profile.
+# Here I take predefined profile
+s = testdata.s_disk
+# define `u` bin to evaluate reference magnification
+u = np.logspace(-2,2,100)
+# define finite source parameter
+rho = 0.1
+# define file name to save the obtained reference test data
+fname_to_save = 'testdata_temp.txt'
+# generate test data.
+# This takes time.
+#testdata.gen(s, rho, fname_to_save, u=u)
+"""
+
 import numpy as np
 import os
 from scipy.integrate import simps, quad
-from mlfast import mag_wm
+import sys
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+from python import mag_wm
 
 def s_disk(u, rho):
     if isinstance(u, float) or isinstance(u, int):
@@ -50,7 +69,7 @@ def A_2d_numeric_simps(u, s, rho, Ntheta=100, Nr=100):
     a = np.array(w)*rho**2
     return a
 
-def A_2d_numeric_quads(u, s, rho):
+def A_2d_numeric_quads(u, s, rho, epsrel=1e-5):
     z = u/rho
     
     def integrand(r, theta, _z):
@@ -59,7 +78,7 @@ def A_2d_numeric_quads(u, s, rho):
     
     a = []
     for _z in z:
-        _a = quad(lambda _t: quad(integrand, 0, 1, args=(_t, _z))[0], 0, np.pi)[0]
+        _a = quad(lambda _t: quad(integrand, 0, 1, args=(_t, _z), epsrel=epsrel)[0], 0, np.pi, epsrel=epsrel)[0]
         a.append(2*_a* rho**2)
         
     return np.array(a)
@@ -74,14 +93,14 @@ def A_para(u, rho):
     return A_2d_numeric_quads(u, s_para, rho)
 
 
-def gen(s, rho, fname, int_method='quads', int_args={'Ntheta':7000, 'Nr':700}, u=None):
+def gen(s, rho, fname, int_method='quads', int_args={'Ntheta':7000, 'Nr':700}, u=None, epsrel=1e-5):
     if u is None:
         u = rho*np.logspace(-5, 3, 200)
     if int_method == 'simps':
         a_2d_nu = A_2d_numeric_simps(u, s, rho, Ntheta=int_args['Ntheta'], Nr=int_args['Nr'])
         header = '%e\nsimps\nNtheta=%d\nNr=%d'%(rho,int_args['Ntheta'],int_args['Nr'])
     if int_method == 'quads':
-        a_2d_nu = A_2d_numeric_quads(u, s, rho)
+        a_2d_nu = A_2d_numeric_quads(u, s, rho, epsrel=epsrel)
         header = '%e\nquads'%rho
     np.savetxt(os.path.join(os.path.dirname(__file__), fname), 
                np.array([u, a_2d_nu]).T, header=header)
@@ -136,7 +155,7 @@ if __name__ == '__main__':
 
     # generate test data for 2d residual plot
     dirname = 'testdata2dquads'
-    if False:
+    if True:
         from mpi4py import MPI
         comm = MPI.COMM_WORLD
         rank = comm.Get_rank()

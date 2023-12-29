@@ -2,6 +2,10 @@
 python module for calculating microlensing magnification with finite source size effect
 by Sunao Sugiyama
 Jan 19, 2022
+
+Compile the c code to get the shared library before you use this module as follows:
+    gcc -c mag_C.c -o mag_C.o
+    gcc -c -fPIC mag_C.c -o mag_C.o
 """
 
 import numpy as np
@@ -15,7 +19,7 @@ from . import mag_wm
 # Implimented based on arxiv: 0901.1316 
 # This technique uses simpson integration. 
 # So naive implementation by python-for-loop is slow. 
-# For this, we implemented this method in C and wrapped by python.
+# For this reason, we implemented this method in C and wrapped by python.
 
 try:
     lib = np.ctypeslib.load_library(os.path.join(os.path.dirname(__file__), 'mag_C.so'),'.')

@@ -84,7 +84,7 @@ class magnification:
         idx = u < self.u_switch*rho
         x   = u[idx]/rho
         val = self.Aext0(x)/rho+1
-        a   = a.at[idx].set( val )
+        a[idx] = val
         # Assign approximated solution: point-source magnification
         idx = u >=self.u_switch*rho
         a[idx]= A_point(u[idx])
@@ -204,7 +204,7 @@ class magnification_log(magnification):
         # assign log profile
         idx = x<1
         sq = np.sqrt(1-x[idx]**2)
-        ans = ans.at[idx].set( sq*np.log(sq) )
+        ans[idx] = sq*np.log(sq)
         return x*np.log(x)
     
     def sk(self, k, rho):
