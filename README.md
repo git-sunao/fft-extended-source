@@ -18,7 +18,7 @@ pip install fastlens
 ```
 for pip user, or
 ```
-conda install -c XXX fastlens
+conda install -c ssunao fastlens
 ```
 for conda user.
 
