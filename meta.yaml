@@ -1,0 +1,42 @@
+{% set name = "fastlens" %}
+{% set version = "1.0.3" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/fastlens-{{ version }}.tar.gz
+  sha256: e95929f17410a8f4e4e62e4fd9c0f3e61e3862f7e28e59e8d709ea229ca7792d
+
+build:
+  noarch: python
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  number: 0
+
+requirements:
+  host:
+    - python
+    - pip
+  run:
+    - python
+    - numpy
+    - scipy
+
+test:
+  imports:
+    - fastlens
+  commands:
+    - pip check
+  requires:
+    - pip
+
+about:
+  home: https://github.com/git-sunao/fft-extended-source
+  summary: fft based microlensing package
+  license: MIT
+  license_file: LICENSE
+
+extra:
+  recipe-maintainers:
+    - git-sunao

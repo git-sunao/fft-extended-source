@@ -9,7 +9,7 @@ Please cite my paper if you use my code for your project.
 
 FFT based method uses public FFTLog code by Xiao Fang, available at [FFTLog-and-beyond](https://github.com/xfangcosmo/FFTLog-and-beyond), and developed in [Fang et al (2019); arXiv:1911.11947](https://arxiv.org/abs/1911.11947).
 
-`fft-extended-source` is open source and distributed with [MIT license](https://opensource.org/licenses/mit).
+`fastlens` is open source and distributed with [MIT license](https://opensource.org/licenses/mit).
 
 # Installation
 This package is installable with both of pip and conda. Just install by running below on your shell 
