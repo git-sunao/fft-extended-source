@@ -9,15 +9,14 @@ def get_requirements():
     return requirements
 
 def find_from_doc(what='version'):
-    f = open(os.path.join(os.path.dirname(__file__), 'mlfast/__init__.py')).read()
+    f = open(os.path.join(os.path.dirname(__file__), 'fastlens/__init__.py')).read()
     match = re.search(r"^__%s__ = ['\"]([^'\"]*)['\"]"%(what), f, re.M)
     if match:
         return match.group(1)
     raise RuntimeError("Unable to find %s string."%what)
 
-
 setup(
-    name='mlfast',
+    name='fastlens',
     version=find_from_doc('version'),
     description='fft based microlensing package',
     long_description=open('README.md').read(),
@@ -26,12 +25,9 @@ setup(
     author=find_from_doc('author'),
     author_email='sunaosugiyama@gmail.com',
     keywords=['microlensing', 'fft'],
-    packages=['mlfast'],
-    # package_dir={'mlfast': 'mlfast'},
-    # package_data={"mlfast": ["*.txt"]},
+    packages=['fastlens'],
     include_package_data=True,
     install_requires=get_requirements(),
-    ext_modules = [Extension('mlfast', sources = ['mlfast/mag_C.c'])],
     classifiers=['Development Status :: 5 - Production/Stable',
                  'Programming Language :: Python', 
                  'Intended Audience :: Science/Research',

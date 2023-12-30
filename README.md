@@ -1,9 +1,9 @@
-# mlfast:
-Public package of FFT based evaluation of extended source magnification, `mlfast`, which is named after `fast microlensing`.
+# fastlens:
+Public package of FFT based evaluation of extended source magnification, `fastlens`, which is named after `fast microlensing`.
 Please cite [Sugiyama 2022](https://arxiv.org/abs/2203.06637).
 
-FFT based method of extended soruce magnification is implemented in `mlfast/mag_fft.py`. 
-FFT based method of time averaged magnification is implemented in `mlfast/timeave.py`.
+FFT based method of extended soruce magnification is implemented in `fastlens/mag_fft.py`. 
+FFT based method of time averaged magnification is implemented in `fastlens/timeave.py`.
 
 Please cite my paper if you use my code for your project. 
 
@@ -14,11 +14,11 @@ FFT based method uses public FFTLog code by Xiao Fang, available at [FFTLog-and-
 # Installation
 This package is installable with both of pip and conda. Just install by running below on your shell 
 ```
-pip install mlfast
+pip install fastlens
 ```
 for pip user, or
 ```
-conda install -c XXX mlfast
+conda install -c XXX fastlens
 ```
 for conda user.
 
