@@ -2,12 +2,6 @@ import re,os,sys
 from setuptools import setup
 from distutils.extension import Extension
 
-def get_requirements():
-    fname = os.path.join(os.path.dirname(__file__), 'requirements.txt')
-    with open(fname, 'r') as f:
-        requirements = [line.rstrip() for line in f]
-    return requirements
-
 def find_from_doc(what='version'):
     f = open(os.path.join(os.path.dirname(__file__), 'fastlens/__init__.py')).read()
     match = re.search(r"^__%s__ = ['\"]([^'\"]*)['\"]"%(what), f, re.M)
@@ -27,7 +21,7 @@ setup(
     keywords=['microlensing', 'fft'],
     packages=['fastlens'],
     include_package_data=True,
-    install_requires=get_requirements(),
+    install_requires=['numpy', 'scipy'],
     classifiers=['Development Status :: 5 - Production/Stable',
                  'Programming Language :: Python', 
                  'Intended Audience :: Science/Research',
