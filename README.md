@@ -1,11 +1,11 @@
 # fastlens:
-Public package of FFT based evaluation of extended source magnification, `fastlens`, which is named after `fast microlensing`.
+Public package of FFT based evaluation of gravitational lensing magnification in the presence of extended (finite) source effect, `fastlens`, which is named after `fast microlensing`.
 Please cite [Sugiyama 2022](https://arxiv.org/abs/2203.06637).
 
-FFT based method of extended soruce magnification is implemented in `fastlens/mag_fft.py`. 
-FFT based method of time averaged magnification is implemented in `fastlens/timeave.py`.
+FFT based method of extended source magnification is implemented in `fastlens/mag_fft.py`. 
+FFT based method of time-averaged magnification is implemented in `fastlens/timeave.py`.
 
-Please cite my paper if you use my code for your project. 
+Please cite my paper if you use my code if you use this package: [arxiv](https://arxiv.org/abs/2203.06637) and [ApJ](https://iopscience.iop.org/article/10.3847/1538-4357/ac8df1).
 
 FFT based method uses public FFTLog code by Xiao Fang, available at [FFTLog-and-beyond](https://github.com/xfangcosmo/FFTLog-and-beyond), and developed in [Fang et al (2019); arXiv:1911.11947](https://arxiv.org/abs/1911.11947).
 
